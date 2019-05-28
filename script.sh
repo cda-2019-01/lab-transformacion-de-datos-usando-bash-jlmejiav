@@ -1,7 +1,7 @@
 ﻿# Escriba su código aquí
 ## Cambiar espacios (tabulaciones) por comas y quitar líneas en blanco
 for a in $(seq 1 3)
-do (sed 's/\t/,/g' data${a}.csv | sed '/^[[:space:]]*$/d') > dataN${a}.csv
+do (sed 's/\t/,/g' data${a}.csv | sed 's/   /,/g' | sed '/^[[:space:]]*$/d') > dataN${a}.csv
 done
 ### asignar nombre de archivo, contador por archivo, se excluye las que son
 ### letras mayúsculas que son la primera "columna" ya que está va siempre y no itera
@@ -18,3 +18,5 @@ do  cont=0
     done
 done
 cat out.3
+rm out.3
+rm dataN*.csv
